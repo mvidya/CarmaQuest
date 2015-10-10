@@ -1,0 +1,18 @@
+<h1>Teams</h1>
+<table>
+	<tr>
+		<td>Name</td>
+		<td>Email</td>
+		<td>Actions</td>
+	</tr>
+	<% @teams.each do |team| %>
+	<tr>
+		<td><%= team.name %></td>
+		<td><%= team.email %></td>
+		<td><%= link_to "show", team %>
+				<%= link_to "Edit", edit_team_path(team.id) %>
+				<%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	</tr>
+	<% end %>
+</table>
+<%= link_to "New", new_team_path %>

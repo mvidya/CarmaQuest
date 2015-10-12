@@ -1,0 +1,19 @@
+<h1>Question</h1>
+<table>
+	<tr>
+		<td>Title:</td>
+		<td><%= @question.title %></td>
+	</tr>
+
+	<tr>
+		<td>Description:</td>
+		<td><%= @question.description %></td>
+	</tr>
+
+	<tr>
+		<td>Team:</td>
+		<td><%= @question.team.name %></td>
+	</tr>
+</table>
+<%= link_to 'Edit', edit_question_path(@question.id) %>
+<%= link_to 'Questions', questions_path %>

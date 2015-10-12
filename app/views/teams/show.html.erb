@@ -2,12 +2,12 @@
 <table>
 	<tr>
 		<td><strong>Name:</strong></td>
-		<td>@team.name</td>
+		<td><%= @team.name %></td>
 	</tr>
 
 	<tr>
 		<td><strong>Email:</strong></td>
-		<td>@team.email</td>
+		<td><%= @team.email %></td>
 	</tr>
 </table>
 <%= link_to "Edit", edit_team_path(@team) %>

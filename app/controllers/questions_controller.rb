@@ -7,9 +7,8 @@ class QuestionsController < ApplicationController
 	end
 
 	def create
-	debugger
 		@question = Question.create(question_params)
-		debugger
+		@question[:user_id] = current_user.id
 		if @question.save
 			redirect_to @question, notice: 'successfully created.'
 		else
@@ -47,6 +46,6 @@ class QuestionsController < ApplicationController
   end
 
 	def question_params
-		params.require(:question).permit(:title, :description)
+		params.require(:question).permit(:title, :description, :user_id, :team_id)
 	end
 end

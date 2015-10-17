@@ -3,7 +3,7 @@ development:
   database: carma_quest
   pool: 5
   username: root
-  password: newpwd
+  password: gourav4carma
   host: localhost
   port: 5432 
 
@@ -12,6 +12,6 @@ test:
   database: carma_quest_test
   pool: 5
   username: root
-  password: newpwd
+  password: gourav4carma
   host: localhost
   port: 543

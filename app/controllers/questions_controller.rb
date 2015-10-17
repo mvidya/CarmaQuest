@@ -28,6 +28,7 @@ class QuestionsController < ApplicationController
 	end
 
 	def show
+		@answer = Answer.new
 	end
 
 	def destroy
@@ -39,13 +40,39 @@ class QuestionsController < ApplicationController
 		@questions = Question.all
 	end
 
+	def answer_create
+		@answer = Answer.create(answer_params)
+		# @question[:user_id] = current_user.id
+		# @question[:question_id] = current_user.id
+		# if @answer.save
+		# 	redirect_to @question, notice: 'successfully created.'
+		# else
+		# 	render :new, notice: 'Something went wrong'
+		# end
+	
+		@answer.save
+		@question = Question.find(params[:answer][:question_id])
+		@answers = @question.answers
+		@answer = Answer.new
+		respond_to do |format|
+			format.js
+		end
+		# redirect_to questions_path
+	end
+
 	private
 
   def set_question
     @question = Question.find(params[:id])
+    @answers = @question.answers
   end
 
 	def question_params
 		params.require(:question).permit(:title, :description, :user_id, :team_id)
 	end
+
+	def answer_params
+		params.require(:answer).permit(:description, :user_id, :question_id)
+	end
+
 end

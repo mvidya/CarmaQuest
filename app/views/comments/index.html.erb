@@ -11,12 +11,14 @@
 </ul>
 
 <h2>New Comment</h2>
-<% form_for [@commentable, Comment.new] do |form| %>
-  <ol class="formList">
-    <li>
-      <%= form.label :comment_user %>
-      <%= form.text_area :comment_user, :rows => 5 %>
-    </li>
-    <li><%= submit_tag "Add comment" %></li>
-  </ol>
+<%= form_for [@commentable, Comment.new] do |form| %>
+  <table>
+    <tr>
+      <tr><%= form.label :comment_user %></tr>
+      <td><%= form.text_area :comment_user %></td>
+    </tr>
+    <tr>
+      <td><%= submit_tag "Add comment" %></td>
+    </tr>
+  </table>
 <% end %>

@@ -17,7 +17,7 @@
 </table>
 <%= link_to 'Edit', edit_question_path(@question.id) %>
 <%= link_to 'Questions', questions_path %>
-<%= link_to 'Comment', comments_path %>
+<%= link_to 'Comment', question_comments_path( @question.id) %>
 <h4> Your Answer </h4>
 <%= render 'answer' %>
 <%#= link_to 'Reply', questions_path %>

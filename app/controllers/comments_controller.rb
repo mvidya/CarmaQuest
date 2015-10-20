@@ -5,7 +5,8 @@ class CommentsController < ApplicationController
 
 	def create
 		@commentable = find_commentable
-		@comment = @commentable.comments.build(params[:comment])
+		params[:comment][:user_id] = current_user.id
+		@comment = @commentable.comments.build(comment_params)
 		if @comment.save
 			flash[:notice] = "Successfully saved comment."
 			redirect_to :id => nil
@@ -15,7 +16,6 @@ class CommentsController < ApplicationController
 	end
 
 	def index
-		debugger
 		@commentable = find_commentable
 		@comments = @commentable.comments
 	end
@@ -27,5 +27,11 @@ class CommentsController < ApplicationController
 			end
 		end
 		nil
+	end
+
+	private
+
+	def comment_params
+		params.require(:comment).permit(:comment_user, :user_id, :commentable_id, :commentable_type)
 	end
 end

@@ -2,15 +2,17 @@ Rails.application.routes.draw do
   devise_for :users
   resources :welcome
   resources :teams
-  resources :comments 
   resources :questions do
     member do
       post :answer_create
     end
+    resources :comments
   end
 
   # map.resources :questions, :has_many => :comments
-  resources :answers
+  resources :answers do
+    resources :comments 
+  end
   #root :to => redirect("/users/login")
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

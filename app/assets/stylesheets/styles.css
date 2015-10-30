@@ -1,0 +1,103 @@
+html,body{
+	width:100%;
+	min-height:100%;
+}
+.p-l-0{
+	padding-left:0;
+}
+.p-r-0{
+	padding-right:0;
+}
+.m-t-0{
+	margin-top:0;
+}
+.m-t-35{
+	margin-top:35px;
+}
+.header{
+	background: #ccc;
+	height:70px;
+	position: fixed;
+	top:0;
+	left:0;
+	right:0;
+	z-index:9999;
+}
+.logo-holder{
+	width:200px;
+	height:50px;
+	margin:10px 0;
+}
+
+.logo-holder img{
+	max-width:100%;
+	max-height:100%;
+}
+.right-holder{
+	position: relative;
+}
+.input-group{
+	margin-top:16px;
+	margin-bottom:16px;
+}
+.welcome-holder{
+	padding-right:40px;
+
+}
+.welcome-text{
+	margin-top:22px;
+	margin-bottom:22px;
+}
+.welcome-text a{
+	color:#333;
+	font-weight:bold;
+}
+.logout{
+	position: absolute;
+	right:0;
+	top:24px;
+	display: block;
+	font-size:20px;
+	color:#333;
+}
+.logout:hover{
+	color:#000;
+	text-decoration: none;
+}
+.content-area{
+	padding-top:40px;
+	margin-top:70px;
+}
+.first-set-panel .list-group-item{
+  padding-bottom:40px;
+  position: relative;
+}
+.first-set-panel .panel-heading{
+  padding-right:100px;
+  position: relative;
+}
+.all-posts{
+	position: absolute;
+	font-size:12px;
+	top:12px;
+	right:15px;
+}
+.posted-user-info{
+  bottom:0;
+  right:0;
+  position: absolute;
+  width:500px;
+  border-left:1px solid #ddd;
+  border-top:1px solid #ddd;
+  height:30px;
+  padding:5px 15px;
+  font-size:12px;
+}
+.post-user,.post-time{
+	font-weight:bold;
+}
+.controlled-text{
+	text-overflow:ellipsis;
+	overflow:hidden;
+	white-space: nowrap;
+}

@@ -25,7 +25,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'therubyracer'
 gem 'execjs'
-gem 'mysql2'
+gem "pg", '~> 0.17.1'
 gem 'devise'
 
 # Use ActiveModel has_secure_password

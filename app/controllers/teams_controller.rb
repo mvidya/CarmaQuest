@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-	before_action :authenticate_user!
+	# before_action :authenticate_user!
   before_filter :set_team, only: [:edit, :update, :show, :destroy]
 
 	def new

@@ -1,17 +1,19 @@
 development:
-  adapter: mysql2
-  database: carma_quest
+  adapter: postgresql
+  encoding: unicode
+  database: carma_quest_development
   pool: 5
-  username: root
-  password: newpwd
+  username: postgres
+  password: postgres
   host: localhost
   port: 5432 
 
 test:
-  adapter: mysql2
+  adapter: postgresql
+  encoding: unicode
   database: carma_quest_test
   pool: 5
-  username: root
-  password: newpwd
+  username: postgres
+  password: postgres
   host: localhost
-  port: 543
+  port: 5432

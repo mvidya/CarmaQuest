@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-	before_action :authenticate_user!
+	# before_action :authenticate_user!
 	before_filter :set_question, only: [:edit, :update, :show, :destroy]
 
 	def new
@@ -37,7 +37,11 @@ class QuestionsController < ApplicationController
 	end
 
 	def index
-		@questions = Question.all
+		if params[:format].nil?
+			@questions = Question.where(team_id: params[:format])
+		else
+		  @questions = Question.all
+		 end	
 	end
 
 	def answer_create

@@ -28,8 +28,7 @@
 
   <div class="field">
     <%= f.label :team_id %><br />
-    <%#= f.number_field :team_id, autofocus: true %>
-    <%= f.collection_select :team_id, Team.all, :id, :name, :prompt => "Select a Team" %>
+    <%= f.collection_select :team_id, Team.where.not(:name => "admin"), :id, :name, :prompt => "Select a Team" %>
   </div>
 
   <div class="actions">

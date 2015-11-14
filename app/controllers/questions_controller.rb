@@ -37,7 +37,7 @@ class QuestionsController < ApplicationController
 	end
 
 	def index
-		if params[:format].nil?
+		if !params[:format].nil?
 			@questions = Question.where(team_id: params[:format])
 		else
 		  @questions = Question.all
@@ -45,15 +45,7 @@ class QuestionsController < ApplicationController
 	end
 
 	def answer_create
-		@answer = Answer.create(answer_params)
-		# @question[:user_id] = current_user.id
-		# @question[:question_id] = current_user.id
-		# if @answer.save
-		# 	redirect_to @question, notice: 'successfully created.'
-		# else
-		# 	render :new, notice: 'Something went wrong'
-		# end
-	
+		@answer = Answer.create(answer_params)	
 		@answer.save
 		@question = Question.find(params[:answer][:question_id])
 		@answers = @question.answers
@@ -61,7 +53,6 @@ class QuestionsController < ApplicationController
 		respond_to do |format|
 			format.js
 		end
-		# redirect_to questions_path
 	end
 
 	private

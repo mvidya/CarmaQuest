@@ -1,7 +1,3 @@
-<!-- <h1>Carma Quest</h1>
--->
-<!-- <%#= link_to "Questions", questions_path %><br/> -->
-<%#= link_to "Teams", teams_path %>
 <div class="header">
   <div class-"col-xs-12 col-sm-12">
     <div class="container">
@@ -44,7 +40,7 @@
                 <% team.questions.order("id desc").limit(3).each do |team_questions| %>
                     <li class="list-group-item">
                       <h4 class="controlled-text"><%= team_questions.title %></h4>
-                      <div class="description controlled-text"><%= team_questions.description %></div>
+                      <div class="description controlled-text"><%= raw(team_questions.description) %></div>
                       <div class="posted-user-info">
                         <div>Posted by <span class="post-user"><%= team_questions.user.name %></span> before <span class="post-time"> 1 day.</span>
                           <a class="pull-right" href="<%= question_path(team_questions.id) %>">Read more</a>

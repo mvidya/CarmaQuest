@@ -1,7 +1,7 @@
 <div id="answer" >
 <% if !@answers.empty?%>
 	<% @answers.each do |ans| %>
-	  <%= ans.description%> 
+	  <%= raw(ans.description) %> 
 	  <%= link_to 'Comment', answer_comments_path(ans.id) %><br />
 	<% end %>
 <%end%>
@@ -9,7 +9,8 @@
 		<table>
 			<tr>
 				<td>Description:</td>
-				<td><%= answer.text_area :description %></td>
+				<td><%= answer.text_area :description, :class => "tinymce", :rows => 5, :cols => 120 %></td>
+				<%= tinymce %>
 			</tr>
 			<tr>
 				<td><%= answer.hidden_field :user_id, value: current_user.id %></td>

@@ -7,12 +7,18 @@ Rails.application.routes.draw do
       post :answer_create
     end
     resources :comments
+    resources :documents
   end
 
   # map.resources :questions, :has_many => :comments
   resources :answers do
     resources :comments 
   end
+
+  resources :sessions do
+    resources :documents 
+  end
+
   #root :to => redirect("/users/login")
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

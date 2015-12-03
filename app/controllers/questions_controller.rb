@@ -10,6 +10,7 @@ class QuestionsController < ApplicationController
 		@question = Question.create(question_params)
 		@question[:user_id] = current_user.id
 		if @question.save
+			UserMailer.new_question("gouravracer@gmail.com", current_user ).deliver!
 			redirect_to @question, notice: 'successfully created.'
 		else
 			render :new, notice: 'Something went wrong'

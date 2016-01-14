@@ -35,7 +35,7 @@ class TeamsController < ApplicationController
 	end
 
 	def index
-		@teams = Team.all
+		@teams = Team.all.paginate(:page => params[:page], :per_page => 1)
 	end
 
 	private

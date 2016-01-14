@@ -15,4 +15,5 @@
 	</tr>
 	<% end %>
 </table>
-<%= link_to "New", new_team_path %>
+<%= link_to "New", new_team_path %><br/>
+<%= will_paginate @teams, renderer: BootstrapPagination::Rails %>

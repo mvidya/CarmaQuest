@@ -28,6 +28,7 @@ gem 'execjs'
 gem "pg", '~> 0.17.1'
 gem 'devise'
 gem 'tinymce-rails'
+gem 'will_paginate-bootstrap'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

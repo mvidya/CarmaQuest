@@ -5,6 +5,7 @@
 	  <%= link_to 'Comment', answer_comments_path(ans.id) %><br />
 	<% end %>
 <%end%>
+<h1>Your Answer</h1>
 	<%= form_for @answer, :url => { :action => "answer_create", :controller => "questions"}, remote: true do |answer| %>
 		<table>
 			<tr>

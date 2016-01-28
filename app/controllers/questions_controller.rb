@@ -18,6 +18,7 @@ class QuestionsController < ApplicationController
 	end
 
 	def edit
+		@question.build_document if !@question.document
 	end
 
 	def update

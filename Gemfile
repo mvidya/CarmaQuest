@@ -28,7 +28,8 @@ gem 'execjs'
 gem "pg", '~> 0.17.1'
 gem 'devise'
 gem 'tinymce-rails'
-gem "paperclip"
+# gem "paperclip", :git => "http://github.com/thoughtbot/paperclip.git"
+gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

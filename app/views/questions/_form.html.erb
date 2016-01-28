@@ -1,20 +1,27 @@
 <%= form_for @question do |f| %>
 	<table>
 		<tr>
-			<td>Title:</td>
+			<td>Title: </td>
 			<td><%= f.text_field :title %></td>
 		</tr>
 
 		<tr>
-			<td>Description:</td>
+			<td>Description: </td>
 			<td><%= f.text_area :description, :class => "tinymce", :rows => 5, :cols => 200 %></td>
 			<%= tinymce %>
 		</tr>
 
 		<tr>
-			<td>Team:</td>
+			<td>Team: </td>
 			<td><%= f.collection_select :team_id, Team.where.not(:name => "admin"), :id, :name, :prompt => "Select a Team" %></td>
 		</tr>
+
+		<%= f.fields_for :document do |document| %>
+			<tr> 
+	    	<td>Photo: </td>
+	    	<td><%= document.file_field :image %></td>
+			</tr>
+		<% end %>
 
 		<tr>
 			<td><%= f.submit "Submit"%></td>

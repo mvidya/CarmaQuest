@@ -4,6 +4,7 @@ class QuestionsController < ApplicationController
 
 	def new
 		@question = Question.new
+		@question.build_document
 	end
 
 	def create
@@ -63,7 +64,7 @@ class QuestionsController < ApplicationController
   end
 
 	def question_params
-		params.require(:question).permit(:title, :description, :user_id, :team_id)
+		params.require(:question).permit(:title, :description, :user_id, :team_id, document_attributes: [ :id, :image, :imageable_id, :imageable_type ])
 	end
 
 	def answer_params

@@ -15,9 +15,9 @@ Rails.application.routes.draw do
     resources :comments 
   end
 
-  resources :sessions do
-    resources :documents 
-  end
+  # resources :sessions do
+  #   resources :documents 
+  # end
 
   #root :to => redirect("/users/login")
   # The priority is based upon order of creation: first created -> highest priority.

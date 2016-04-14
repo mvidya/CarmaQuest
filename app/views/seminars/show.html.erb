@@ -1,0 +1,27 @@
+<h1>Seminar</h1>
+<table>
+	<tr>
+		<td>Title:</td>
+		<td><%= @seminar.title %></td>
+	</tr>
+
+	<tr>
+		<td>Seminar_time:</td>
+		<td><%= @seminar.seminar_time %></td>
+	</tr>
+    <tr>
+		<td>References:</td>
+		<td><%= @seminar.references %></td>
+	</tr>
+
+	<tr>
+		<td>Team:</td>
+		<td><%= @seminar.team.name %></td>
+	</tr>
+	<tr>
+	    <td>File attached:</td>
+		<td><%= link_to "My document", @seminar.document.url, target: "_blank" %></td>
+	</tr>
+ </table>
+<%= link_to 'Edit', edit_seminar_path %>
+

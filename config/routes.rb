@@ -14,7 +14,8 @@ Rails.application.routes.draw do
   resources :answers do
     resources :comments 
   end
-
+  resources :seminars
+   
   # resources :sessions do
   #   resources :documents 
   # end

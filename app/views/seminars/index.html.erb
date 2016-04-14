@@ -1,0 +1,24 @@
+<h1>Seminars</h1>
+<table border="1" width="100%">
+<tr>
+        <td>Title</td>
+		<td>Seminar_time</td>
+		<td>References</td>
+		<td>Team</td>
+		<td>Document</td>
+		<td>Actions</td>
+	</tr>
+	<% @seminars.each do |seminar| %>
+		<tr>
+		  <td><%= link_to seminar.title, seminar %></td>
+		  <td><%= seminar.seminar_time %></td>
+		 <td><%= seminar.references %></td>
+		  <td><%= seminar.team.name %></td>
+		  <td><%= link_to "view document", seminar.document.url, target: "_blank" %></td>
+	        <td><%= link_to "Edit", edit_seminar_path(seminar) %>
+		      <%= link_to 'Destroy', seminar, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		</tr>
+	<% end %>
+</table>
+<%= link_to 'New', new_seminar_path %>
+    

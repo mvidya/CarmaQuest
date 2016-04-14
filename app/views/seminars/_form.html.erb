@@ -1,0 +1,29 @@
+<%= form_for @seminar , :html => { :multipart => true } do |f| %>
+	<table>
+	    <tr>
+			<td>Title: </td>
+			<td><%= f.text_field :title %></td>
+		</tr>
+		<tr>
+			<td>Seminar_time: </td>
+			<td><%= f.text_field :seminar_time %></td>
+		</tr>
+        <tr>
+			<td>References: </td>
+			<td><%= f.text_field :references %></td>
+		</tr>
+		
+        <tr>
+			<td>Team: </td>
+			<td><%= f.collection_select :team_id, Team.where.not(:name => "admin"), :id, :name, :prompt => "Select a Team" %></td>
+		</tr>
+		 
+		<tr>
+			<td>document: </td>
+			<td><%= f.file_field :document %></td>
+		</tr>
+        <tr>
+			<td><%= f.submit "Submit"%></td>
+		</tr>
+	</table>
+<% end %>

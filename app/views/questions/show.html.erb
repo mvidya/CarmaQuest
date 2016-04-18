@@ -14,9 +14,15 @@
 		<td>Team:</td>
 		<td><%= @question.team.name %></td>
 	</tr>
+
+  <% if @question.document.present? %>
+		<tr>
+			<td>Screen Shot:</td>
+			<td><%= image_tag(@question.document.image.url(:medium))%></td>
+		</tr>
+	<% end %>
 </table>
 <%= link_to 'Edit', edit_question_path(@question.id) %>
 <%= link_to 'Questions', questions_path %>
 <%= link_to 'Comment', question_comments_path( @question.id) %>
-<h4> Your Answer </h4>
 <%= render 'answer' %>

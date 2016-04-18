@@ -4,4 +4,6 @@ class Question < ActiveRecord::Base
 	belongs_to :team
 	has_many :answers
 	has_many :comments, as: :commentable
+	has_one :document, as: :imageable
+	accepts_nested_attributes_for :document
 end

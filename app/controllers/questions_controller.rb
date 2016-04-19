@@ -11,6 +11,9 @@ class QuestionsController < ApplicationController
 		@question = Question.create(question_params)
 		@question[:user_id] = current_user.id
 		if @question.save
+			user = current_user.email
+			team = Team.find(params[:question][:team_id]).email
+			UserMailer.new_question(user,team).deliver!
 			redirect_to @question, notice: 'successfully created.'
 		else
 			render :new, notice: 'Something went wrong'

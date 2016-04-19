@@ -13,7 +13,11 @@ before_filter :set_seminar, only: [:edit, :update, :show, :destroy]
 	 @seminar = Seminar.create(seminar_params)
 	 @seminar[:user_id] = current_user.id
 		if @seminar.save
-			redirect_to @seminar, notice: 'successfully created.'
+			x = current_user.email
+			y = Team.find(params[:seminar][:team_id]).email
+			debugger
+			UserMailer.new_seminar(x,y).deliver!
+            redirect_to @seminar, notice: 'successfully created.'
 		else
 			render :new, notice: 'Something went wrong'
 		end

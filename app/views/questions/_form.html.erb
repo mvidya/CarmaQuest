@@ -12,8 +12,8 @@
 		</tr>
 
 		<tr>
-			<td>Team: </td>
-			<td><%= f.collection_select :team_id, Team.where.not(:name => "admin"), :id, :name, :prompt => "Select a Team" %></td>
+			<td>Team:</td>
+			<td><%= f.collection_select :team_id, admin_team, :id, :name, :prompt => "Select a Team" %></td>
 		</tr>
 
 		<%= f.fields_for :document do |document| %>

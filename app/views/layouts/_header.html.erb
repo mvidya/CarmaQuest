@@ -18,10 +18,10 @@
           </div>
         </div>
         <div class="col-xs-12 col-sm-4 welcome-holder text-right">
-          <div class="welcome-text">Hey, <span><a href="#"><%= current_user.name %></a></span></div>
+          <div class="welcome-text">Hey, <span><a href="#"><%= current_user.name %></a> <%= link_to "", destroy_user_session_path, method: :delete, class: "logout glyphicon glyphicon-off"  %></span></div>
         </div>
         <!-- <a class="logout glyphicon glyphicon-off" href="<%= destroy_user_session_path %>" title="logout"></a> -->
-        <%= link_to "", destroy_user_session_path, method: :delete, class: "logout glyphicon glyphicon-off"  %>
+       
       </div>
     </div>
   </div>

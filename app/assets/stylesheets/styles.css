@@ -56,7 +56,7 @@ html,body{
 .logout{
 	position: absolute;
 	right:0;
-	top:24px;
+	top:4px !important;
 	display: block;
 	font-size:20px;
 	color:#333;

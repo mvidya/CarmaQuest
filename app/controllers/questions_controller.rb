@@ -13,7 +13,7 @@ class QuestionsController < ApplicationController
 		if @question.save
 			user = current_user.email
 			team = Team.find(params[:question][:team_id]).email
-			UserMailer.new_question(user,team).deliver!
+			UserMailer.new_question(user,team,@question).deliver!
 			redirect_to @question, notice: 'successfully created.'
 		else
 			render :new, notice: 'Something went wrong'
@@ -33,7 +33,12 @@ class QuestionsController < ApplicationController
 	end
 
 	def show
-		@answer = Answer.new
+		   @answer = Answer.new
+		unless @question.user == current_user
+
+          # @question.count = @question.count + 1
+           @question.save
+        end
 	end
 
 	def destroy
@@ -43,10 +48,11 @@ class QuestionsController < ApplicationController
 
 	def index
 		if !params[:format].nil?
-			@questions = Question.where(team_id: params[:format])
+		   @questions = Question.where(team_id: params[:format])
 		else
-		  @questions = Question.all
-		 end	
+        @q = Question.ransack(params[:q])
+        @questions = @q.result
+        end
 	end
 
 	def answer_create
@@ -62,10 +68,10 @@ class QuestionsController < ApplicationController
 
 	private
 
-  def set_question
-    @question = Question.find(params[:id])
-    @answers = @question.answers
-  end
+    def set_question
+        @question = Question.find(params[:id])
+        @answers = @question.answers
+    end
 
 	def question_params
 		params.require(:question).permit(:title, :description, :user_id, :team_id, document_attributes: [ :id, :image, :imageable_id, :imageable_type ])
@@ -74,5 +80,5 @@ class QuestionsController < ApplicationController
 	def answer_params
 		params.require(:answer).permit(:description, :user_id, :question_id)
 	end
-
+    
 end

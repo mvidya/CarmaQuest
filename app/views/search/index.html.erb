@@ -1,0 +1,27 @@
+<h1>Search results</h1>
+<div class="container">
+<% @questions.each do |q|%>
+<div class="row">
+	<p>
+		<%= raw(q.title)%>
+	</p>
+	<p>
+		<%= raw(q.description)%>
+	</p>
+</div>
+<%end%>
+<% @answers.each do |q|%>
+<div class="row">
+	<p>
+		<%= raw(q.description)%>
+	</p>
+</div>
+<%end%>
+<% @seminars.each do |q| %>
+<div class="row">
+	<p>
+		<%= raw(q.title)%>
+	</p>
+</div>
+<%end%>
+</div>

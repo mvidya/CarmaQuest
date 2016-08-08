@@ -16,7 +16,7 @@
                       <h4 class="controlled-text"><%= team_questions.title %></h4>
                       <div class="description controlled-text"><%= raw(team_questions.description) %></div>
                       <div class="posted-user-info">
-                        <div>Posted by <span class="post-user"><%= team_questions.user.name %></span> before <span class="post-time"> 1 day.</span>
+                        <div>Posted by <span class="post-user"><%= team_questions.user.try(:name) %></span> before <span class="post-time"> 1 day.</span>
                           <a class="pull-right" href="<%= question_path(team_questions.id) %>">Read more</a>
                         </div>
                       </div>

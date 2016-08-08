@@ -3,7 +3,6 @@ before_filter :set_seminar, only: [:edit, :update, :show, :destroy]
    
     def new
    	 @seminar = Seminar.new
-       
     end
 
     def show
@@ -15,8 +14,7 @@ before_filter :set_seminar, only: [:edit, :update, :show, :destroy]
 		if @seminar.save
 			x = current_user.email
 			y = Team.find(params[:seminar][:team_id]).email
-			debugger
-			UserMailer.new_seminar(x,y).deliver!
+			UserMailer.new_seminar(x,y,@seminar).deliver!
             redirect_to @seminar, notice: 'successfully created.'
 		else
 			render :new, notice: 'Something went wrong'
@@ -41,21 +39,24 @@ before_filter :set_seminar, only: [:edit, :update, :show, :destroy]
 	end
 
 	def index
-		if !params[:format].nil?
-			@seminars = Seminar.where(team_id: params[:format])
+	if (!params[:format].nil?)
+	@seminars = Seminar.where(team_id: params[:format]) 
 		else
 		  @seminars = Seminar.all
-		 end	
+		 end
 	end
+	
 	private
 
   def set_seminar
     @seminar = Seminar.find(params[:id])
-   
-  end
+   end
+  
   def seminar_params
 		params.require(:seminar).permit(:title, :seminar_time, :references, :user_id, :team_id, :document)
 	
 	end
-
 end
+
+ 
+

@@ -1,4 +1,6 @@
 class Seminar < ActiveRecord::Base
+is_impressionable
+acts_as_votable
 validates :title, :user_id, :team_id, presence: true
 belongs_to :user#, dependent: :destroy
 belongs_to :team#, dependent: :destroy

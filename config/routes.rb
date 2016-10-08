@@ -6,16 +6,20 @@ Rails.application.routes.draw do
   resources :questions do
     member do
       post :answer_create
+      put "like" => "questions#upvote"
+      put "unlike" => "questions#downvote"
     end
     resources :comments
     resources :documents
   end
-
   # map.resources :questions, :has_many => :comments
   resources :answers do
     resources :comments 
   end
-  resources :seminars
+  resources :seminars do 
+      put "like" => "seminars#upvote"
+      put "unlike" => "seminars#downvote"
+  end
    
   # resources :sessions do
   #   resources :documents 
@@ -27,7 +31,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
-  get "search" => "search#index"
+  
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

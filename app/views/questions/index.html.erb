@@ -3,15 +3,32 @@
 	<tr>
 		<td>Title</td>
 		<td>Team</td>
+		<td>Views</td>
 		<td>Actions</td>
+		<td>Like</td>
+		<td>Unlike</td>	
 	</tr>
 	<% @questions.each do |question| %>
 		<tr>
 		  <td><%= link_to question.title, question %></td>
 		  <td><%= question.team.name %></td>
-		  <td><%= link_to "Edit", edit_question_path(question) %>
+		  <td><%= question.impressionist_count(:filter=>:user_id) %></td>
+		  <td><%= link_to 'show', question %>
+		  <%= link_to "Edit", edit_question_path(question) %>
 		      <%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-		</tr>
+		  <td><%= link_to like_question_path(question), class: "like", method: :put do %>
+    <button type="button" class="btn-btn-info" aria-label="Left-align">
+    <span class="glyphicon glyphicon-thumbs-up glyphicon-align-centre" aria-hidden="true"></span>
+    <span class="badge"><%= question.get_upvotes.size %></span>
+    </button>
+    <% end %></td>
+		  <td><%= link_to unlike_question_path(question), class: "unlike", method: :put do %>
+		  <button type="button" class="btn-btn-info" aria-label="Left-align">
+    <span class="glyphicon glyphicon-thumbs-down glyphicon-align-centre" aria-hidden="true"></span>
+    <span class="badge"><%= question.get_downvotes.size %></span>
+    </button>
+    <% end %></td>
+  </tr>
 	<% end %>
 </table>
 <%= link_to 'New', new_question_path %>

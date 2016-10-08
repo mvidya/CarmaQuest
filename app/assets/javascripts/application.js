@@ -16,6 +16,3 @@
 //= require_tree .
 //= require scripts
 //= require tinymce
-//= require jquery-ui
-//= require autocomplete-rails
- 

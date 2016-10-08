@@ -7,6 +7,9 @@
 		<td>Team</td>
 		<td>Document</td>
 		<td>Actions</td>
+		<td>Views</td>
+		<td>Like</td>
+		<td>Unlike</td>	
 	</tr>
 	  <% @seminars.each do |seminar| %>
 		<tr>
@@ -15,11 +18,23 @@
 		 <td><%= seminar.references %></td>
 		  <td><%= seminar.team.try(:name) %></td>
 		  <td><%= link_to "view document", seminar.document.url, target: "_blank" %></td>
-	        <td><%= link_to "Edit", edit_seminar_path(seminar.id) %>
+	      <td><%= link_to "Edit", edit_seminar_path(seminar.id) %>
 		      <%= link_to 'Destroy', seminar, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-		</tr>
-		<% end %>
-	 
+		   <td><%= seminar.impressionist_count(:filter=>:user_id) %></td>
+		  <td><%= link_to seminar_like_path(seminar), class: "like", method: :put do %>
+    <button type="button" class="btn-btn-info" aria-label="Left-align">
+    <span class="glyphicon glyphicon-thumbs-up glyphicon-align-centre" aria-hidden="true"></span>
+    <span class="badge"><%= seminar.get_upvotes.size %></span>
+    </button>
+    <% end %></td>
+		  <td><%= link_to seminar_unlike_path(seminar), class: "unlike", method: :put do %>
+		  <button type="button" class="btn-btn-info" aria-label="Left-align">
+    <span class="glyphicon glyphicon-thumbs-down glyphicon-align-centre" aria-hidden="true"></span>
+    <span class="badge"><%= seminar.get_downvotes.size %></span>
+    </button>
+    <% end %></td>
+  </tr>
+	<% end %> 
   </table>
           <%= link_to 'New', new_seminar_path %>
     

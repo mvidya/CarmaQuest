@@ -27,6 +27,7 @@ gem 'therubyracer'
 gem 'execjs'
 gem "pg", '~> 0.17.1'
 gem 'devise'
+gem 'acts_as_votable'
 gem 'tinymce-rails'
 # gem "paperclip", :git => "http://github.com/thoughtbot/paperclip.git"
 gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
@@ -36,11 +37,9 @@ gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 # gem 'unicorn'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-gem 'rails4-autocomplete'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 
@@ -48,4 +47,4 @@ group :development, :test do
   gem 'spring'
   gem "letter_opener"
 end
-
+ gem 'impressionist'

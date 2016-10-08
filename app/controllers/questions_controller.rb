@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
 	# before_action :authenticate_user!
-	before_filter :set_question, only: [:edit, :update, :show, :destroy]
-
+	before_filter :set_question, only: [:edit, :update, :show, :destroy, :upvote, :downvote]
+   
 	def new
 		@question = Question.new
 		@question.build_document
@@ -33,10 +33,9 @@ class QuestionsController < ApplicationController
 	end
 
 	def show
+		impressionist(@question)
 		   @answer = Answer.new
 		unless @question.user == current_user
-
-          # @question.count = @question.count + 1
            @question.save
         end
 	end
@@ -65,6 +64,16 @@ class QuestionsController < ApplicationController
 			format.js
 		end
 	end
+
+	def upvote
+        @question.upvote_from current_user
+        redirect_to questions_path
+    end
+
+    def downvote
+        @question.downvote_from current_user
+        redirect_to questions_path
+    end
 
 	private
 

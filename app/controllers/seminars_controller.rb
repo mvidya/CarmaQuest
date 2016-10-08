@@ -1,11 +1,12 @@
 class SeminarsController < ApplicationController
-before_filter :set_seminar, only: [:edit, :update, :show, :destroy]
+before_filter :set_seminar, only: [:edit, :update, :show, :destroy, :upvote, :downvote]
    
     def new
    	 @seminar = Seminar.new
     end
 
     def show
+     impressionist(@seminar)
     end
 
     def create
@@ -45,7 +46,16 @@ before_filter :set_seminar, only: [:edit, :update, :show, :destroy]
 		  @seminars = Seminar.all
 		 end
 	end
-	
+
+	def upvote
+        @seminar.upvote_from current_user
+        redirect_to seminars_path
+    end
+
+    def downvote
+        @seminar.downvote_from current_user
+        redirect_to seminars_path
+    end
 	private
 
   def set_seminar

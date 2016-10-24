@@ -49,8 +49,7 @@ class QuestionsController < ApplicationController
 		if !params[:format].nil?
 		   @questions = Question.where(team_id: params[:format])
 		else
-        @q = Question.ransack(params[:q])
-        @questions = @q.result
+           @questions = Question.all
         end
 	end
 

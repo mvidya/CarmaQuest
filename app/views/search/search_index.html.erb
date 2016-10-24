@@ -1,0 +1,16 @@
+ <% @questions.each do |question| %>
+ <div>
+  <p>
+    <%= question.title.html_safe %>
+    <%= question.description.html_safe %>
+  </p>
+  </div>
+  <% end %>
+  
+  <% @answers.each do |answer| %>
+  <div>
+  <p>
+    <%= answer.description.html_safe %>
+  </p>
+  </div>
+ <% end %>

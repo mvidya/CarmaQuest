@@ -58,13 +58,12 @@ before_filter :set_seminar, only: [:edit, :update, :show, :destroy, :upvote, :do
     end
 	private
 
-  def set_seminar
-    @seminar = Seminar.find(params[:id])
-   end
+    def set_seminar
+        @seminar = Seminar.find(params[:id])
+    end
   
-  def seminar_params
-		params.require(:seminar).permit(:title, :seminar_time, :references, :user_id, :team_id, :document)
-	
+    def seminar_params
+	    params.require(:seminar).permit(:title, :seminar_time, :references, :user_id, :team_id, :document)
 	end
 end
 

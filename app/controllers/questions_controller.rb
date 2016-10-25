@@ -6,6 +6,7 @@ class QuestionsController < ApplicationController
 		@question.build_document
 	end
 
+
 	def create
 		@question = Question.create(question_params)
 		@question[:user_id] = current_user.id

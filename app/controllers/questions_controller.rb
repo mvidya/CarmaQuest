@@ -1,5 +1,4 @@
 class QuestionsController < ApplicationController
-	# before_action :authenticate_user!
 	before_filter :set_question, only: [:edit, :update, :show, :destroy, :upvote, :downvote]
    
 	def new

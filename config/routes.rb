@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => {:omniauth_callbacks => "omniauth_callbacks"}
+  # get 'users/auth/facebook/callback', to: 'questions#create'
+  # get 'auth/failure', to: redirect('/')
+  # get 'signout', to: 'sessions#destroy', as: 'signout'
   resources :welcome
   resources :teams
   resources :questions do
@@ -15,7 +18,7 @@ Rails.application.routes.draw do
     resources :comments 
   end
   resources :seminars
-   
+  get :global_search, controller:"application"
   # resources :sessions do
   #   resources :documents 
   # end
@@ -25,7 +28,9 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'welcome#index'
+  devise_scope :user do
+    root 'welcome#index'
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

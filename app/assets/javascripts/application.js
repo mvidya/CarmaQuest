@@ -16,4 +16,4 @@
 //= require_tree .
 //= require scripts
 //= require tinymce
- 
+//= require ckeditor/init

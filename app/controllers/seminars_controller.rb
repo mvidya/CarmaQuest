@@ -15,7 +15,6 @@ before_filter :set_seminar, only: [:edit, :update, :show, :destroy]
 		if @seminar.save
 			x = current_user.email
 			y = Team.find(params[:seminar][:team_id]).email
-			debugger
 			UserMailer.new_seminar(x,y).deliver!
             redirect_to @seminar, notice: 'successfully created.'
 		else

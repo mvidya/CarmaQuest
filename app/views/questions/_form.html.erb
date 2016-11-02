@@ -7,8 +7,9 @@
 
 		<tr>
 			<td>Description: </td>
-			<td><%= f.text_area :description, :class => "tinymce", :rows => 5, :cols => 200 %></td>
-			<%= tinymce %>
+			<td><%#= f.text_area :description, :class => "tinymce", :rows => 5, :cols => 200 %>
+			<%= f.cktext_area :description, ckeditor: { language: 'uk'} %>
+			<%#= tinymce %>
 		</tr>
 
 		<tr>

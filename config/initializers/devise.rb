@@ -147,7 +147,7 @@ Devise.setup do |config|
   # Email regex used to validate email formats. It simply asserts that
   # one (and only one) @ exists in the given string. This is mainly
   # to give user feedback and not to assert the e-mail validity.
-  config.email_regexp = /\A([\w\.%\+\-]+)@carmatec\.com\z/i
+  # config.email_regexp = /\A([\w\.%\+\-]+)@carmatec\.com\z/i
 
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this
@@ -262,4 +262,6 @@ Devise.setup do |config|
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
+  config.omniauth :facebook, "147407959054651", "e61f8041682a73475d311ec877a63456", scope: 'email', info_fields: 'email,name,first_name,last_name,gender'
+  config.omniauth :google_oauth2, "200088380954-pdk1cf04crc75i5hf9adikreneag6q2f.apps.googleusercontent.com", "1Zt7d7bx-Y5d1-6kbZPKogXo", { access_type: "offline", approval_prompt: "" }
 end

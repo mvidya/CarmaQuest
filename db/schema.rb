@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160413072239) do
+ActiveRecord::Schema.define(version: 20161021070711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,19 +23,6 @@ ActiveRecord::Schema.define(version: 20160413072239) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
-
-  create_table "attachments", force: :cascade do |t|
-    t.integer  "attach_id"
-    t.string   "attach_type"
-    t.string   "attach_file_name"
-    t.string   "attach_content_type"
-    t.integer  "attach_file_size"
-    t.datetime "attach_updated_at"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
-  end
-
-  add_index "attachments", ["attach_type", "attach_id"], name: "index_attachments_on_attach_type_and_attach_id", using: :btree
 
   create_table "comments", force: :cascade do |t|
     t.text     "comment_user"
@@ -77,12 +64,8 @@ ActiveRecord::Schema.define(version: 20160413072239) do
     t.integer  "user_id"
     t.integer  "team_id"
     t.integer  "document_id"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
-    t.string   "document_file_name"
-    t.string   "document_content_type"
-    t.integer  "document_file_size"
-    t.datetime "document_updated_at"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "teams", force: :cascade do |t|
@@ -111,10 +94,8 @@ ActiveRecord::Schema.define(version: 20160413072239) do
     t.integer  "team_id"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "attach_file_name"
-    t.string   "attach_content_type"
-    t.integer  "attach_file_size"
-    t.datetime "attach_updated_at"
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

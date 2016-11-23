@@ -1,15 +1,10 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # skip_before_filter :verify_authenticity_token
-
   def facebook
 	  @user = User.find_for_facebook_oauth(request.env["omniauth.auth"])
-
 	  if !@user.nil? and @user.persisted?
-	    # session["facebook_profile_pic"] = request.env["omniauth.auth"].info.image
-	    # session["facebook_profile_name"] = request.env["omniauth.auth"].info.name
 	    @user = User.find_for_facebook_oauth(request.env["omniauth.auth"])
 	    flash[:notice] = I18n.t "devise.omniauth_callbacks.success"
-	     #redirect_to sign_up_user_path(:id)
 	    sign_in_and_redirect @user
 	  else
 	      session["devise.facebook_uid"] = request.env["omniauth.auth"].except("extra")

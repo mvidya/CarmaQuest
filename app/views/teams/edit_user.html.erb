@@ -1,0 +1,13 @@
+"Please select Team"
+<%= form_for @user, :url => update_user_teams_path do |user| %>
+	<table>
+	  <tr>
+	    <%= user.hidden_field :user_id, value: params[:user_id] %>
+	    <td>Team:</td>
+	    <td><%= user.collection_select :team_id, admin_team, :id, :name, :prompt => "Select a Team" %></td>
+	  </tr>
+	  <tr>
+			<td><%= user.submit "Submit"%></td>
+		</tr>
+	</table>
+<% end %>

@@ -1,5 +1,6 @@
 class DocumentsController < ApplicationController
-
+  before_action :check_team_id
+  
 	def index
 		@imageable = find_imageable
 		@documents = @imageable.documents

@@ -11,9 +11,10 @@ class UserMailer < ApplicationMailer
     mail(:to => guides, :subject => "New Seminar is been posted have a look") 
   end 
 
-  def user_registration_mail_facebook(user)
+  def user_registration_mail_facebook(user, pw)
+    @password = pw
     @user = user
-    mail(:to => guides, :subject => "New Seminar is been posted have a look")
+    mail(:to => @user.email, :subject => "Facebook registration")
   end
 
 	ActionMailer::Base.default_url_options[:host] = "localhost:3000"

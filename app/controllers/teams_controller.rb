@@ -1,6 +1,7 @@
 class TeamsController < ApplicationController
 	# before_action :authenticate_user!
   before_filter :set_team, only: [:edit, :update, :show, :destroy]
+  before_action :check_team_id, except: [:edit_user, :update_user]
 
 	def new
 		@team = Team.new
@@ -36,6 +37,16 @@ class TeamsController < ApplicationController
 
 	def index
 		@teams = Team.all
+	end
+
+	def edit_user
+		@user = User.find(params[:user_id])
+	end
+
+	def update_user
+		user = User.find(params[:user][:user_id])
+		user.update_attributes(team_id: params[:user][:team_id])
+		redirect_to root_path
 	end
 
 	private

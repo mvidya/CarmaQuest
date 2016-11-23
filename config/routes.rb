@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   # get 'auth/failure', to: redirect('/')
   # get 'signout', to: 'sessions#destroy', as: 'signout'
   resources :welcome
-  resources :teams
+  resources :teams do
+    get :edit_user, on: :collection
+    patch :update_user, on: :collection
+  end
   resources :questions do
     member do
       post :answer_create

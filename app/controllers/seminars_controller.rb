@@ -1,6 +1,6 @@
 class SeminarsController < ApplicationController
-before_filter :set_seminar, only: [:edit, :update, :show, :destroy]
-   
+  before_filter :set_seminar, only: [:edit, :update, :show, :destroy]
+  before_action :check_team_id
     def new
    	 @seminar = Seminar.new
        

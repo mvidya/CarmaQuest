@@ -1,7 +1,8 @@
 class QuestionsController < ApplicationController
 	# before_action :authenticate_user!
 	before_filter :set_question, only: [:edit, :update, :show, :destroy]
-
+  before_action :check_team_id
+  
 	def new
 		@question = Question.new
 		@question.build_document

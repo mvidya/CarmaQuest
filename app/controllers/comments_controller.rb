@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+	before_action :check_team_id
+	
 	def new
 		@commentable = Comment.new
 	end

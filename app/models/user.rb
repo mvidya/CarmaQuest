@@ -14,19 +14,15 @@ class User < ActiveRecord::Base
       return user
     else
       registered_user = User.where(:email => access_token.info.email).first
-      if registered_user
-        return registered_user
-      else
-
-        pwd=Devise.friendly_token[0,20]
-        user = User.create(:provider => access_token.provider, :uid => access_token.uid,:email => access_token.info.email,:password => pwd, :confirmed_at => Date.today, :name => access_token.info.name )
+        @pwd=Devise.friendly_token[0,20]
+        @user = User.create(:provider => access_token.provider, :uid => access_token.uid,:email => access_token.info.email,:password => @pwd, :confirmed_at => Date.today, :name => access_token.info.name )
         # user.generate_authentication_token!
-         user.save(validate:false)
-         return user
-        # UserMailer.user_registration_mail(user).deliver!
-        #sign_in_and_redirect @user, :event => :authentication
-    
-      end
+         # user.save(validate:false)
+         debugger
+         UserMailer.user_registration_mail_facebook(@user, @pwd).deliver!
+         return @user
+         # debugger
+        # UserMailer.user_registration_mail(@user.email).deliver!
     end
   end
 end

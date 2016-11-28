@@ -13,6 +13,7 @@
  
  *= require_tree .
  *= require_self
+ *= require_bootstrap.min
  * require script
  *= require reset-styles
  */

@@ -1,8 +1,10 @@
 class CommentsController < ApplicationController
+
 	def new
 		@commentable = Comment.new
 	end
 
+    # create method
 	def create
 		@commentable = find_commentable
 		params[:comment][:user_id] = current_user.id
@@ -34,4 +36,5 @@ class CommentsController < ApplicationController
 	def comment_params
 		params.require(:comment).permit(:comment_user, :user_id, :commentable_id, :commentable_type)
 	end
+
 end
